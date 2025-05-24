@@ -35,7 +35,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "4207571553";
+    const serviceWorkerVersion = "3361588262";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -56,22 +56,43 @@
       });
     });
   </script>
+  <script>
+    // Push a fake state to prevent back navigation
+    history.pushState(null, document.title, location.href);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, document.title, location.href);
+    });
 
+    // Block horizontal swipe (trackpad gesture)
+    window.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && e.deltaX < 0) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Block touch swipe
+    let startX = 0;
+    window.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX;
+    }, { passive: false });
+
+    window.addEventListener('touchmove', function (e) {
+      let deltaX = e.touches[0].clientX - startX;
+      if (deltaX > 50) { // Right swipe
+        e.preventDefault();
+      }
+    }, { passive: false });
+  </script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js"></script>
-  <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4yUJZBNrZ60tLkDMp_SM_JMv04uZOOTQ">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4yUJZBNrZ60tLkDMp_SM_JMv04uZOOTQ">
   </script>
-
   <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getFunctions } from "firebase/functions";
-
-
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
-
   // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: 'AIzaSyAxrlWlMRomwMemNoh8ONnJ5PmdzPT5yPA',
@@ -81,9 +102,9 @@
     messagingSenderId: '808141670120',
     appId: '1:808141670120:web:89244d1be4228043b12b5d'
   };
-
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+
 </script>
 </body>
 </html>

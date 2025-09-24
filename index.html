@@ -18,93 +18,24 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Visualiza el proceso de descarga en tiempo real y recibe notificaciones instantáneas de cada viaje">
+  <meta name="description" content="Admin Panel of Ataya">
 
-  <!-- iOS meta tags & icons -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Cargocontrol">
+  <meta name="apple-mobile-web-app-title" content="ATAYA Admin">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="shortcut" type="image/x-icon" href="favicon.ico">
 
-  <title>Cargocontrol</title>
+  <title>ATAYA Admin</title>
   <link rel="manifest" href="manifest.json">
-
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "494848078";
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
 </head>
 <body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
-      });
-    });
-  </script>
-  <script>
-    // Push a fake state to prevent back navigation
-    history.pushState(null, document.title, location.href);
-    window.addEventListener('popstate', function () {
-      history.pushState(null, document.title, location.href);
-    });
-
-    // Block horizontal swipe (trackpad gesture)
-    window.addEventListener('wheel', function (e) {
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && e.deltaX < 0) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-
-    // Block touch swipe
-    let startX = 0;
-    window.addEventListener('touchstart', function (e) {
-      startX = e.touches[0].clientX;
-    }, { passive: false });
-
-    window.addEventListener('touchmove', function (e) {
-      let deltaX = e.touches[0].clientX - startX;
-      if (deltaX > 50) { // Right swipe
-        e.preventDefault();
-      }
-    }, { passive: false });
-  </script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4yUJZBNrZ60tLkDMp_SM_JMv04uZOOTQ">
-  </script>
-  <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFunctions } from "firebase/functions";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: 'AIzaSyAxrlWlMRomwMemNoh8ONnJ5PmdzPT5yPA',
-    authDomain: 'cargocontrol-d5ef8.firebaseapp.com',
-    projectId: 'cargocontrol-d5ef8',
-    storageBucket: 'cargocontrol-d5ef8.appspot.com',
-    messagingSenderId: '808141670120',
-    appId: '1:808141670120:web:89244d1be4228043b12b5d'
-  };
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-
-</script>
+  <script src="flutter_bootstrap.js" async></script>
+  <meta name="google-signin-client_id" content="326374510733-ud8quh50ntmemi1p1veusfc0bl0cvp5d.apps.googleusercontent.com">
 </body>
 </html>

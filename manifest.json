@@ -1,11 +1,11 @@
 {
-    "name": "cargocontrol",
-    "short_name": "cargocontrol",
+    "name": "ActivTips Admin",
+    "short_name": "ActivTips Admin",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Visualiza el proceso de descarga en tiempo real y recibe notificaciones instantáneas de cada viaje",
+    "description": "Admin Panel of ActivTips",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
